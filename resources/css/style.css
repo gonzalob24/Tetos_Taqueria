@@ -1,0 +1,661 @@
+/* Orange color:  #e67e22 */
+
+/*---------------------------------------------------*/
+/* BASIC/DEFAULT SETUP */
+/*---------------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', 'sans-serif';
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+/*---------------------------------------------------*/
+/*REUSABLE COMPONENTS*/
+/*---------------------------------------------------*/
+
+.row {
+    /* only value that will have an absolute value */
+    max-width: 1140px;
+    margin: 0 auto; /* 0 auto 0 auto*/
+}
+
+.clearfix {zoom: 1} /* clears the floats*/
+.clearfix:after {
+    content: ':';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+
+/*-------- HEADING ---------*/
+
+
+h1,
+h2,
+h3 {
+
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 200%;
+    word-spacing: 4px;
+}
+
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: " "; /* I don't want any word to appear */
+    width: 100px;
+    margin: 0 auto; /* shortcut to center */
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+
+/*-------- PARAGRAPHS ---------*/
+
+.long-specials {
+    line-height: 145%; /* Between 120% and 145% */
+    width: 70%;  /* at most 2 complete alphabets */
+    margin-left: 15%;  /* b/c total width 100% center remaining 30% to both sides */
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+
+/*-------- ICONS ---------*/
+
+.icon-big {
+    font-size: 350%;
+    display: block;
+    color: #e67e22;
+    margin-bottom: 0px;
+}
+
+.icon-small {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #e67e22;
+    margin-right: 10px;
+    /* secret to align text and icons */
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -7px;
+}
+
+
+
+/*---------------------------------------------------*/
+/*HEADER*/
+/*---------------------------------------------------*/
+
+header {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(meat1.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(meat1.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.cow-logo {
+    height: 100px;
+    width:auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+/* format how the links look
+    looks the same and after it is clicked*/
+.main-nav li a:link,
+.main-nav li a:visited {
+    padding: 8px 0px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 85%;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border-bottom 300ms;
+    transition: border-bottom 300ms;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+}
+
+/*-------- LINKS ---------*/
+a:link,
+a:visited {
+    color: #e67e22;
+    text-decoration: none;
+    font-weight: 350;
+    border-bottom: 1px solid #e67e22;
+    -webkit-transition: border-bottom 0.3s, color 0.3s;
+    transition: border-bottom 0.3s, color 0.3s;
+}
+
+a:hover,
+a:active {
+    color: #555;
+    border-bottom: 1px solid transparent;
+
+}
+/*-------- BUTTONS ---------*/
+
+
+.button:link ,
+.button:visited,
+input[type=submit] {  /* element in its normal state and after clicking*/
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none; /* get rid of the line */
+    border-radius: 200px;
+    -webkit-transition: background-color 300ms, border 300ms, color 300ms;
+    transition: background-color 300ms, border 300ms, color 300ms;
+
+}
+
+.button-full:link,
+.button-full:visited,
+input[type=submit] {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.button-ghost:link,
+.button-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+/* hover action */
+.button:hover,
+.button:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+    background-color: #cf6d17;
+}
+
+.button-full:hover,
+.button-full:active {
+    background-color: #cf6d17;
+}
+
+.button-ghost:hover,
+.button-ghost:active {
+    background-color: #cf6d17;
+    color: #fff;
+}
+
+/*---------------------------------------------------*/
+/*SPECIALS*/
+/*---------------------------------------------------*/
+
+
+.specials .long-specials {
+    margin-bottom: 30px;
+}
+
+
+/*---------------------------------------------------*/
+/*MEALS PHOTOS*/
+/*---------------------------------------------------*/
+
+.section-menu {
+    padding: 0px; /* te removing the padding before the pictures*/
+}
+
+.menu-showcase {
+    list-style: none;
+    width: 100%;
+}
+
+.menu-showcase li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.menu-photo {
+    width: 100%;
+    margin: 0px;
+    overflow: hidden; /* prevents the image from spilling over its container */
+    background-color: #000; /*by having a dark background and making the phot opaque*/
+}
+
+.menu-photo img {
+    opacity: 0.7;  /*the image will appear darker */
+    width: 100%;
+    height: auto;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15); /* makes the image a 15% bigget*/
+    -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.menu-photo img:hover {
+    opacity: 1.0;
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+}
+
+/*---------------------------------------------------*/
+/*MAIN ENTREES*/
+/*---------------------------------------------------*/
+
+.menu-price p {
+    font-size: 86%;
+}
+
+.menu-price h3 {
+    color: black;
+    font-weight: 350;
+}
+
+.space {
+    margin-top: 14px;
+}
+
+/*---------------------------------------------------*/
+/*WEEKEND SPECIAL*/
+/*---------------------------------------------------*/
+.weekend-specials {
+    margin-top: -50px;
+}
+.weekend-specials h3 {
+    color: black;
+    font-weight: 350;
+}
+
+.weekend-specials p {
+    font-size: 86%;
+}
+
+/*---------------------------------------------------*/
+/*SIDE ORDERS*/
+/*---------------------------------------------------*/
+
+.side-orders {
+    margin-top: -50px;
+}
+.side-orders h3 {
+    color: black;
+    font-weight: 350;
+}
+
+.side-orders p{
+    font-size: 86%;
+}
+
+/*---------------------------------------------------*/
+/*SIDE ORDERS*/
+/*---------------------------------------------------*/
+.beverages {
+    margin-top: -50px;
+}
+
+.beverages h3 {
+    color: black;
+    font-weight: 350;
+}
+.beverages p {
+    font-size: 86%;
+}
+/*---------------------------------------------------*/
+/*HOW IT WORKS*/
+/*---------------------------------------------------*/
+.order-steps {
+    background-color: #f4f4f4;
+}
+.steps-box:first-child { /* first child will select the first fo the text boxes */
+    text-align: right;
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+.steps-box:last-child {
+    padding-left: 3%;
+    margin-top: 70px;
+}
+.app-screen {
+    width: 30%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+}
+
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    display: inline-block; /* inline-blocl does not force a line break*/
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.button-app:link,
+.button-app:visited {
+    border: 0;
+}
+
+.button-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+/*---------------------------------------------------*/
+/*CITY*/
+/*---------------------------------------------------*/
+
+.box img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.city-feature {
+    margin-bottom: 5px;
+}
+
+/*---------------------------------------------------*/
+/*REVIEWS*/
+/*---------------------------------------------------*/
+
+.reviews {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0.8))), url(../img/meat4.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(../img/meat4.jpg);
+    /* linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(meat1.jpg);*/
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;  /* images stays in the same place */
+}
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    position: relative;
+    margin-top: 40px;
+}
+
+blockquote:before {
+    content: "\201C";
+    font-size: 500%;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
+cite {
+    font-size: 90%;
+    display: block;
+    margin-top: 25px;
+}
+
+
+/*---------------------------------------------------*/
+/*SIFGN UP*/
+/*---------------------------------------------------*/
+
+.plans {
+    background-color: #f4f4f4;
+}
+
+.plan-box {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 90%;
+    margin-left: 5%;
+    -webkit-box-shadow: 0 2px 2px #efefef;
+    box-shadow: 0 2px 2px #efefef;
+}
+
+.plan-box div {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.plan-box div:first-child {
+    background-color: #fcfcfc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.plan-box div:last-child {
+    text-align: center;
+    border: 0;
+}
+.plan-price {
+    font-size: 300%;
+    font-weight: 100;
+    margin-bottom: 10px;
+    color: #e67e22;
+}
+
+.plan-price span {
+    font-size: 30%;
+    font-weight: 300;
+}
+
+.plan-price-meal {
+    font-size: 80%;
+}
+.plan-box ul {
+    list-style: none;
+
+}
+.plan-box ul li{
+    padding: 5px 0;
+
+}
+
+
+/*---------------------------------------------------*/
+/*CONTACT FORM*/
+/*---------------------------------------------------*/
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto;  /* Easy way to center it*/
+}
+input[type=text],
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type=checkbox] {
+    margin: 10px 5px 10px 0;
+}
+
+/* This gets rid of the blue outline that is added by web browser*/
+*:focus {outline: none;}
+
+/*---------------------------------------------------*/
+/*FOOTER*/
+/*---------------------------------------------------*/
+
+footer {
+    background-color: #333;
+    padding: 50px;
+    font-size: 80%;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+    font-size: 170%;
+}
+
+.social-fb,
+.social-tw,
+.social-yelp {
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.social-fb:hover {
+    color: #3b5998;
+}
+
+.social-tw:hover {
+    color: #55acee;
+}
+
+.social-yelp:hover {
+    color: #c41200;
+}
+
+
+footer p {
+    color: #888;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

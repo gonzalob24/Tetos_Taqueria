@@ -1,0 +1,137 @@
+/*
+ Browser prefixes:
+-webkik-
+Andriod:
+Chrome:
+iOS:
+Safari:
+
+Firefox: -moz-
+Opera: -o-
+IE: -ms-
+
+-webkit-border-radius: 25px;
+-moz-border-radius: 25px;
+-o-border-radius: 25px;
+border-radius: 25px;
+
+use autoprefix extension
+
+*/
+
+/*  
+From big tablets to 1200px (width smaller than 1140px row) 
+*/
+
+@media only screen and (max-width: 1200px) {
+    .hero-text-box {
+        width: 100%;
+        padding: 0 2%;
+    }
+    .row { padding: 0 2%; }
+}
+
+/*  
+1024px ipad in landscaped mode.
+
+Small tablets to big tablets. 768-1023px
+*/
+@media only screen and (max-width: 1023px) {
+    body { font-size: 18px; }
+    section { padding: 60px 0; }
+    .long-specials {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .order-steps { margin-top:10px; }
+    .steps-box:last-child { margin-top: 10px; }
+    .works-step { margin-bottom: 40px; }
+    .works-step:last-of-type { margin-bottom: 60px; }
+    .app-screen { width: 50%; }
+    
+    .icon-smal {
+        width: 17px;
+        margin-right: 10px;
+    }
+    .city-feature { font-size: 90%; }
+    
+    .plan-box {
+        width: 100%;
+        margin-left: 0%;
+    }
+    
+    .plan-price { font-size: 250%; }
+    
+    .contact-form { width: 80%; }
+}
+
+/*  
+Small phones to small tablets 481-767px
+*/
+@media only screen and (max-width: 767px) {
+    body { font-size: 20px; }
+    section { padding: 30px 0; }
+    .row,
+    .hero-text-box { 
+        padding: 0 4%; 
+        font-size: 80%;
+    }
+    .cow-logo { 
+        height: 60px;
+        width: auto;
+    }
+    .col { 
+        width: 100%; 
+        margin: 0 0 4% 0%;
+    }
+    .main-nav { display: none; }
+    
+    h1 { font-size: 180%; }
+    h2 { font-size: 150%; }
+    
+    .long-specials {
+        width: 100%;
+        margin-left: 0;
+    }
+    .app-screen { width: 40%; }
+    .steps-box:first-child { text-align: center; }
+    .works-step div {
+        height: 40px;
+        width: 40px;
+        padding: 5px;
+        margin-right: 15px;
+        font-size: 110%;
+
+    }
+
+    .works-step { margin-bottom: 30px; }
+    .works-step:last-of-type { margin-bottom: 40px; }
+
+}
+
+/*  
+When the screen is less than or equal to 480px
+These styles will be executed. 
+480px is width of iphones
+
+For small phone 0-480px
+*/
+@media only screen and (max-width:480px) {
+    section { padding: 25px 0; }
+    .contact-form { width: 100%; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
