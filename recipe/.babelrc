@@ -1,0 +1,16 @@
+{
+    // collection of code tranform plugins. Plugins that actually trasnform the code
+    "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "browsers": [
+                        "last 5 versions",
+                        "ie >= 8"
+                    ]
+                }
+            }
+        ]
+    ]
+}
