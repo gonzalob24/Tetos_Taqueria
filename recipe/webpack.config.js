@@ -1,9 +1,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+
 module.exports = {
-    entry: ['babel-polyfill', './src/js/index.js'],  // where webpack will start. Can specify one or more entry files
+    entry: ['babel-polyfill', './src/js/index.js'],
     output: {
-        path: path.resolve(__dirname, 'dist'), // needs to have an absolute path using a built in node package
+        path: path.resolve(__dirname, 'dist'),
         filename: 'js/bundle.js'
     },
     devServer: {
@@ -18,7 +20,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/, // for each loader look for all files and test if it ends in .js
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
