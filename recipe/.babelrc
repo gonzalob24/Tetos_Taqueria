@@ -1,5 +1,5 @@
 {
-    // collection of code tranform plugins. Plugins that actually trasnform the code
+    // collection of code tranform plugins, that actually trasnform the code
     "presets": [
         [
             "env",
