@@ -1,22 +1,50 @@
-import axios from 'axios'; // works with all browsers
+import Search from './models/Search';
 
-async function getResults(query) {
-    // const proxy = 'https://cors-anywhere.herokuapp.com'
-    // const key = ''; // I dont need a key with thi API
-    try {
-        const result = await axios(`https://forkify-api.herokuapp.com/api/search?q=${query}`);
-        const recipes = result.data.recipes
-        console.log(recipes);
-    } catch (error) {
-        alert(error)
+/** Global state of the app
+ * - search object
+ * - current recipe object
+ * - Shopping list object
+ * - Linked recipe
+ */
+const state = {};
+
+const controlSearch = async () => {
+    // get query from the view
+    const query = 'pizza' // TODO
+
+    if (query) {
+        // New search object and add it to state
+        state.search = new Search(query);
+
+        // Prepare UI for results
+
+        // Search for recipes
+        await state.search.getResults();
+
+        // Render results on UI
+        console.log(state.search.result)
     }
 }
 
-getResults("tacos");
+document.querySelector('.search').addEventListener('submit', e => {
+    e.preventDefault(); // prevents window from loading
+})
+const search = new Search('pizza');
+console.log(search);
+search.getResults();
+
+
+
+
+
+
+
+
+
+
 
 
 // https://forkify-api.herokuapp.com/api/search?q=pizza
-
 // Currently I am going to build the app with a free API that does not use proxy or key
 
 
