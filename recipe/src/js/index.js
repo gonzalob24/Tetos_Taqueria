@@ -1,6 +1,6 @@
 import Search from './models/Search';
 import * as searchView from './views/searchViews'
-import { elements } from './views/base';
+import { elements, renderLoader, clearLoader } from './views/base';
 
 
 /** Global state of the app
@@ -22,11 +22,12 @@ const controlSearch = async () => {
         // Prepare UI for results
         searchView.clearInput();
         searchView.clearResultsList();
-
+        renderLoader(elements.searchResults);
         // Search for recipes
         await state.search.getResults();
 
         // Render results on UI
+        clearLoader();
         searchView.renderResults(state.search.result);
     }
 };
@@ -34,8 +35,18 @@ const controlSearch = async () => {
 elements.searchForm.addEventListener('submit', e => {
     e.preventDefault(); // prevents window from loading
     controlSearch();
-})
+});
 
+elements.searchResultsPages.addEventListener('click', e => {
+    // clossest method allows me to click on a button and returns the closses to 
+    // the class I selected.
+    const btn = e.target.closest('.btn-inline');
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.clearResultsList();
+        searchView.renderResults(state.search.result, goToPage);
+    }
+});
 
 
 
