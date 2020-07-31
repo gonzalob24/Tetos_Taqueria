@@ -1,7 +1,7 @@
-import Search from './models/Search';
-import * as searchView from './views/searchViews'
-import { elements } from './views/base';
-
+import Search from "./models/Search";
+import * as searchView from "./views/searchViews";
+import { elements } from "./views/base";
+import Recipes from "./models/recipe";
 
 /** Global state of the app
  * - search object
@@ -11,50 +11,43 @@ import { elements } from './views/base';
  */
 const state = {};
 
+/**
+ * SEARCH CONTROLLER
+ */
 const controlSearch = async () => {
-    // get query from the view
-    const query = searchView.getInput();
+  // get query from the view
+  const query = searchView.getInput();
 
-    if (query) {
-        // New search object and add it to state
-        state.search = new Search(query);
+  if (query) {
+    // New search object and add it to state
+    state.search = new Search(query);
 
-        // Prepare UI for results
-        searchView.clearInput();
-        searchView.clearResultsList();
+    // Prepare UI for results
+    searchView.clearInput();
+    searchView.clearResultsList();
 
-        // Search for recipes
-        await state.search.getResults();
+    // Search for recipes
+    await state.search.getResults();
 
-        // Render results on UI
-        searchView.renderResults(state.search.result);
-    }
+    // Render results on UI
+    searchView.renderResults(state.search.result);
+  }
 };
 
-elements.searchForm.addEventListener('submit', e => {
-    e.preventDefault(); // prevents window from loading
-    controlSearch();
-})
+elements.searchForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // prevents window from loading
+  controlSearch();
+});
 
+/**
+ * RECIPE CONTROLLER
+ */
 
-
-
-
-
-
-
-
-
-
-
-
+const recipe = new Recipes(47746);
+recipe.getRecipe();
+console.log(recipe);
 // https://forkify-api.herokuapp.com/api/search?q=pizza
 // Currently I am going to build the app with a free API that does not use proxy or key
-
-
-
-
-
 
 // TEST CODE
 // import string from './models/Search';
