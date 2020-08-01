@@ -39,10 +39,17 @@ const controlSearch = async () => {
   }
 };
 
-elements.searchForm.addEventListener("submit", (e) => {
+elements.searchForm.addEventListener('submit', (e) => {
   e.preventDefault(); // prevents window from loading
   controlSearch();
 });
+
+// TESTING//
+// window.addEventListener('load', (e) => {
+//   e.preventDefault(); // prevents window from loading
+//   controlSearch();
+// });
+
 
 /**
  * RECIPE CONTROLLER
@@ -59,10 +66,15 @@ const controlRecipe = async () => {
 
     // create new recipe object
     state.recipe = new Recipe(id);
+
+    //TESTING
+    // window.r = state.recipe;
+
     try {
       // Get recipe
       await state.recipe.getRecipe();
-
+      state.recipe.parseIngredients();
+      console.log(state.recipe.ingredients)
       // Calculate serving and time
       state.recipe.calcTime();
       state.recipe.calcServings();

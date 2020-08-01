@@ -29,4 +29,62 @@ export default class Recipe {
   calcServings() {
     this.servings = 4;
   }
+
+  parseIngredients() {
+    const unitsFullName = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
+    const unitsShortName = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+
+    const newIngredients = this.ingredients.map(value => {
+      // same units
+      let ingredient = value.toLowerCase();
+      unitsFullName.forEach((unit, i) => {
+        ingredient = ingredient.replace(unit, unitsShortName[i]);
+      });
+
+      // remove parentheses
+      ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+
+      // Parse Ingredients int count, unit and ingredient
+      const arrIng = ingredient.split(' ');
+      const unitIndex = arrIng.findIndex(el => unitsShortName.includes(el));
+
+      let objIngredient;
+      if (unitIndex > -1) {
+        // There is a unit
+        const arrCount = arrIng.slice(0, unitIndex);
+        let count;
+        if (arrCount.length === 1) {
+          count = eval(arrIng[0].replace('-', '+'));
+        } else {
+          count = eval(arrIng.slice(0, unitIndex).join('+'));
+        }
+
+        objIngredient = {
+          count: count,
+          units: arrIng[unitIndex],
+          ingredients: arrIng.slice(unitIndex + 1).join(' ')
+        };
+
+      } else if (parseInt(arrIng[0], 10)) {
+        // There is no unit but the 1st element is a number
+        objIngredient = {
+          count: parseInt(arrIng[0], 10),
+          units: '',
+          ingredients: arrIng.slice(1).join(' ')
+        };
+      } else if (unitIndex === -1) {
+        // There is no unit and no number in 1st position
+        objIngredient = {
+          count: 1,
+          units: '',
+          ingredients: ingredient
+        };
+      }
+      // console.log(arrIng);
+
+      return objIngredient;
+
+    });
+    this.ingredients = newIngredients;
+  }
 }

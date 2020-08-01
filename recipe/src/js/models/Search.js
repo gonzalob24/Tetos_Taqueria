@@ -1,6 +1,6 @@
 import axios from 'axios'; // works with all browsers
 
-export default class Serach {
+export default class Search {
     constructor(query) {
         this.query = query;
     }
