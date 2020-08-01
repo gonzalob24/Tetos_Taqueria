@@ -1,7 +1,7 @@
 import Search from "./models/Search";
 import * as searchView from "./views/searchViews";
 import { elements, renderLoader, clearLoader } from "./views/base";
-import Recipes from "./models/recipe";
+import Recipe from "./models/recipe";
 
 /** Global state of the app
  * - search object
@@ -26,11 +26,16 @@ const controlSearch = async () => {
     searchView.clearInput();
     searchView.clearResultsList();
     renderLoader(elements.searchResults);
-    // Search for recipes
-    await state.search.getResults();
-    clearLoader();
-    // Render results on UI
-    searchView.renderResults(state.search.result);
+    try {
+      // Search for recipes
+      await state.search.getResults();
+      clearLoader();
+      // Render results on UI
+      searchView.renderResults(state.search.result);
+    } catch (error) {
+      alert('Problem with the search...');
+      clearLoader();
+    }
   }
 };
 
@@ -43,9 +48,43 @@ elements.searchForm.addEventListener("submit", (e) => {
  * RECIPE CONTROLLER
  */
 
-const recipe = new Recipes(47746);
-recipe.getRecipe();
-console.log(recipe);
+// hashchange helps with geting id from browser
+const controlRecipe = async () => {
+  // Get ID from URL 
+  const id = window.location.hash.replace('#', '');
+  console.log(id);
+
+  if (id) {
+    // preapre UI for changes
+
+    // create new recipe object
+    state.recipe = new Recipe(id);
+    try {
+      // Get recipe
+      await state.recipe.getRecipe();
+
+      // Calculate serving and time
+      state.recipe.calcTime();
+      state.recipe.calcServings();
+
+      // Render recipe
+      console.log(state.recipe);
+    } catch (error) {
+      alert('Problem in processing recipe')
+    }
+  }
+}
+
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
+
+
+// window.addEventListener('hashchange', controlRecipe);
+// window.addEventListener('load', controlRecipe);
+
+// const recipe = new Recipe(47746);
+// recipe.getRecipe();
+// console.log(recipe);
 // https://forkify-api.herokuapp.com/api/search?q=pizza
 // Currently I am going to build the app with a free API that does not use proxy or key
 
