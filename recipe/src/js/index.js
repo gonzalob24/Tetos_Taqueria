@@ -1,7 +1,7 @@
-import Search from './models/Search';
-import * as searchView from './views/searchViews'
-import { elements, renderLoader, clearLoader } from './views/base';
-
+import Search from "./models/Search";
+import * as searchView from "./views/searchViews";
+import { elements } from "./views/base";
+import Recipes from "./models/recipe";
 
 /** Global state of the app
  * - search object
@@ -11,61 +11,43 @@ import { elements, renderLoader, clearLoader } from './views/base';
  */
 const state = {};
 
+/**
+ * SEARCH CONTROLLER
+ */
 const controlSearch = async () => {
-    // get query from the view
-    const query = searchView.getInput();
+  // get query from the view
+  const query = searchView.getInput();
 
-    if (query) {
-        // New search object and add it to state
-        state.search = new Search(query);
+  if (query) {
+    // New search object and add it to state
+    state.search = new Search(query);
 
-        // Prepare UI for results
-        searchView.clearInput();
-        searchView.clearResultsList();
-        renderLoader(elements.searchResults);
-        // Search for recipes
-        await state.search.getResults();
+    // Prepare UI for results
+    searchView.clearInput();
+    searchView.clearResultsList();
 
-        // Render results on UI
-        clearLoader();
-        searchView.renderResults(state.search.result);
-    }
+    // Search for recipes
+    await state.search.getResults();
+
+    // Render results on UI
+    searchView.renderResults(state.search.result);
+  }
 };
 
-elements.searchForm.addEventListener('submit', e => {
-    e.preventDefault(); // prevents window from loading
-    controlSearch();
+elements.searchForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // prevents window from loading
+  controlSearch();
 });
 
-elements.searchResultsPages.addEventListener('click', e => {
-    // clossest method allows me to click on a button and returns the closses to 
-    // the class I selected.
-    const btn = e.target.closest('.btn-inline');
-    if (btn) {
-        const goToPage = parseInt(btn.dataset.goto, 10);
-        searchView.clearResultsList();
-        searchView.renderResults(state.search.result, goToPage);
-    }
-});
+/**
+ * RECIPE CONTROLLER
+ */
 
-
-
-
-
-
-
-
-
-
-
-
+const recipe = new Recipes(47746);
+recipe.getRecipe();
+console.log(recipe);
 // https://forkify-api.herokuapp.com/api/search?q=pizza
 // Currently I am going to build the app with a free API that does not use proxy or key
-
-
-
-
-
 
 // TEST CODE
 // import string from './models/Search';
