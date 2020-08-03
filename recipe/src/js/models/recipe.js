@@ -8,7 +8,9 @@ export default class Recipe {
 
   async getRecipe() {
     try {
-      const results = await axios(`https://forkify-api.herokuapp.com/api/get?rId=${this.id}`);
+      const results = await axios(
+        `https://forkify-api.herokuapp.com/api/get?rId=${this.id}`
+      );
       this.title = results.data.recipe.title;
       this.author = results.data.recipe.publisher;
       this.image = results.data.recipe.image_url;
@@ -31,10 +33,28 @@ export default class Recipe {
   }
 
   parseIngredients() {
-    const unitsFullName = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
-    const unitsShortName = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
-    const units = [...unitsShortName, 'kg', 'g'];
-    const newIngredients = this.ingredients.map(value => {
+    const unitsFullName = [
+      "tablespoons",
+      "tablespoon",
+      "ounces",
+      "ounce",
+      "teaspoons",
+      "teaspoon",
+      "cups",
+      "pounds",
+    ];
+    const unitsShortName = [
+      "tbsp",
+      "tbsp",
+      "oz",
+      "oz",
+      "tsp",
+      "tsp",
+      "cup",
+      "pound",
+    ];
+    const units = [...unitsShortName, "kg", "g"];
+    const newIngredients = this.ingredients.map((value) => {
       // same units in recipe
       let ingredient = value.toLowerCase();
       unitsFullName.forEach((unit, i) => {
@@ -42,11 +62,11 @@ export default class Recipe {
       });
 
       // remove parentheses
-      ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+      ingredient = ingredient.replace(/ *\([^)]*\) */g, " ");
 
       // Parse Ingredients int count, unit and ingredient
-      const arrIng = ingredient.split(' ');
-      const unitIndex = arrIng.findIndex(el => units.includes(el));
+      const arrIng = ingredient.split(" ");
+      const unitIndex = arrIng.findIndex((el) => units.includes(el));
 
       let objIngredient;
       if (unitIndex > -1) {
@@ -54,36 +74,34 @@ export default class Recipe {
         const arrCount = arrIng.slice(0, unitIndex);
         let count;
         if (arrCount.length === 1) {
-          count = eval(arrIng[0].replace('-', '+'));
+          count = eval(arrIng[0].replace("-", "+"));
         } else {
-          count = eval(arrIng.slice(0, unitIndex).join('+'));
+          count = eval(arrIng.slice(0, unitIndex).join("+"));
         }
 
         objIngredient = {
           count: count,
           units: arrIng[unitIndex],
-          ingredients: arrIng.slice(unitIndex + 1).join(' ')
+          ingredients: arrIng.slice(unitIndex + 1).join(" "),
         };
-
       } else if (parseInt(arrIng[0], 10)) {
         // There is no unit but the 1st element is a number
         objIngredient = {
           count: parseInt(arrIng[0], 10),
-          units: '',
-          ingredients: arrIng.slice(1).join(' ')
+          units: "",
+          ingredients: arrIng.slice(1).join(" "),
         };
       } else if (unitIndex === -1) {
         // There is no unit and no number in 1st position
         objIngredient = {
           count: 1,
-          units: '',
-          ingredients: ingredient
+          units: "",
+          ingredients: ingredient,
         };
       }
       // console.log(arrIng);
 
       return objIngredient;
-
     });
     this.ingredients = newIngredients;
   }
