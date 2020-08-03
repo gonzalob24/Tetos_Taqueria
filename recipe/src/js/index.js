@@ -99,7 +99,24 @@ const controlRecipe = async () => {
     window.addEventListener(event, controlRecipe)
 );
 
-// window.addEventListener('hashchange', controlRecipe);
+// recipe button clicks
+elements.recipe.addEventListener('click', e => {
+    if (e.target.matches('.btn-decrease, .btn-decrease *')) {
+        // decrease servings
+        if (state.recipe.servings > 1) {
+            state.recipe.updateServings('dec');
+            recipeView.updateServingsIngredients(state.recipe);
+        }
+    } else if (e.target.matches('.btn-increase, .btn-increase *')) {
+        // increase servings
+        state.recipe.updateServings('inc');
+        recipeView.updateServingsIngredients(state.recipe);
+    }
+    console.log(state.recipe);
+});
+
+
+// window.addEventListener('hashchange', ntrolRecipe);
 // window.addEventListener('load', controlRecipe);
 
 // const recipe = new Recipe(47746);
