@@ -11,6 +11,9 @@ export default class Likes {
             image
         }
         this.likes.push(likeObject);
+
+        // add item to localstorage
+        this.persistData();
         return likeObject;
     }
 
@@ -25,5 +28,16 @@ export default class Likes {
 
     getLikes() {
         return this.likes.length;
+    }
+    persistData() {
+        localStorage.setItem('likes', JSON.stringify(this.likes));
+    }
+
+    // read data from localstorage
+    readStorage() {
+        const data = JSON.parse(localStorage.getItem('likes'));
+        if (data) {
+            this.likes = data;
+        }
     }
 }

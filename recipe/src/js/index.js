@@ -16,7 +16,7 @@ import * as likesView from './views/likesView';
  * - Linked recipe
  */
 const state = {};
-window.state = state;
+// window.state = state;
 /**
  * SEARCH CONTROLLER
  */
@@ -120,6 +120,7 @@ const controlList = () => {
     });
 };
 
+
 // delete and update list items
 
 elements.shoppingList.addEventListener('click', e => {
@@ -140,9 +141,6 @@ elements.shoppingList.addEventListener('click', e => {
 /**
  * LIKE CONTROLLER
  */
-// TESTING
-state.like = new Likes();
-// likesView.showLikesMenue(state.like.getLikes());
 
 const controlLike = () => {
     if (!state.like) {
@@ -181,6 +179,14 @@ const controlLike = () => {
     // likesView.showLikeMenue(state.like.getLikes());
 };
 
+// When the page loads
+window.addEventListener('load', () => {
+    state.like = new Likes();
+    state.like.readStorage();
+    likesView.showLikesMenue(state.like.getLikes());
+    state.like.likes.forEach(like => likesView.renderLike(like));
+});
+
 // recipe button clicks
 elements.recipe.addEventListener('click', e => {
     if (e.target.matches('.btn-decrease, .btn-decrease *')) {
@@ -200,9 +206,8 @@ elements.recipe.addEventListener('click', e => {
     }
     // console.log(state.recipe);
 });
+
 // window.l = new List();
-
-
 // window.addEventListener('hashchange', ntrolRecipe);
 // window.addEventListener('load', controlRecipe);
 
