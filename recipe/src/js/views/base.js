@@ -5,6 +5,9 @@ export const elements = {
     searchResults: document.querySelector(".results"),
     searchResultsPages: document.querySelector(".results__pages"),
     recipe: document.querySelector(".recipe"),
+    shoppingList: document.querySelector('.shopping__list'),
+    likeMenue: document.querySelector('.likes__field'),
+    likesList: document.querySelector('.likes__list')
 };
 
 // keep class selecters in one place
