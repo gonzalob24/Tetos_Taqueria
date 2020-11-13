@@ -30,6 +30,7 @@ body {
 	/* only value that will have an absolute value */
 	max-width: 1140px;
 	margin: 0 auto; /* 0 auto 0 auto*/
+	display: block;
 }
 
 .clearfix {
@@ -156,10 +157,8 @@ header {
 }
 
 .cow-logo {
-	height: 100px;
+	height: 60px;
 	width: auto;
-	float: left;
-	margin-top: 20px;
 }
 
 .main-nav {
@@ -191,7 +190,9 @@ header {
 .main-nav li a:active {
 	border-bottom: 2px solid #e67e22;
 }
-
+#nav-bg {
+	opacity: 0.9 !important;
+}
 /*-------- LINKS ---------*/
 a:link,
 a:visited {
