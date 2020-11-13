@@ -101,6 +101,15 @@ Small phones to small tablets 481-767px
 		width: 100%;
 		margin-left: 0;
 	}
+
+	header {
+		background-image: url("../img/meat1_dark.jpg");
+		background-size: auto;
+		background-position: center;
+		background-repeat: no-repeat;
+		height: 100vh;
+		background-attachment: fixed;
+	}
 }
 
 /*  
