@@ -103,11 +103,7 @@ Small phones to small tablets 481-767px
 	}
 
 	header {
-		background-image: url("../img/meat1_dark.jpg");
-		background-position: center;
-		background-repeat: no-repeat;
-		height: 100vh;
-		background-attachment: fixed;
+		background-attachment: scroll;
 	}
 }
 
@@ -124,5 +120,9 @@ For small phone 0-480px
 	}
 	.contact-form {
 		width: 100%;
+	}
+
+	header {
+		background-attachment: scroll;
 	}
 }
