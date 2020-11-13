@@ -1,0 +1,29 @@
+{
+	"name": "tetos_taqueria",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"start": "node src/app.js",
+		"dev": "nodemon src/app.js, -e html, js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gonzalob24/Tetos_Taqueria.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/gonzalob24/Tetos_Taqueria/issues"
+	},
+	"homepage": "https://github.com/gonzalob24/Tetos_Taqueria#readme",
+	"dependencies": {
+		"ejs": "^3.1.5",
+		"express": "^4.17.1",
+		"jade": "^1.11.0",
+		"request": "^2.88.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.6"
+	}
+}
