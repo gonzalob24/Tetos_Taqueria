@@ -131,16 +131,17 @@ h3 {
 /*---------------------------------------------------*/
 
 header {
-	background-image: -webkit-gradient(
+	/* background-image: -webkit-gradient(
 			linear,
 			left top,
 			left bottom,
 			from(rgba(0, 0, 0, 0.7)),
 			to(rgba(0, 0, 0, 0.7))
 		),
-		url(meat1.jpg);
-	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-		url(meat1.jpg);
+		url("meat1.jpg"); */
+	/* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+		url("meat1.jpg"); */
+	background-image: url("../img/meat1_dark.jpg");
 	background-size: cover;
 	background-position: center;
 	height: 100vh;
@@ -161,38 +162,6 @@ header {
 	width: auto;
 }
 
-.main-nav {
-	float: right;
-	list-style: none;
-	margin-top: 55px;
-}
-
-.main-nav li {
-	display: inline-block;
-	margin-left: 40px;
-}
-
-/* format how the links look
-    looks the same and after it is clicked*/
-.main-nav li a:link,
-.main-nav li a:visited {
-	padding: 8px 0px;
-	color: #fff;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: 0.8rem;
-	border-bottom: 2px solid transparent;
-	-webkit-transition: border-bottom 300ms;
-	transition: border-bottom 300ms;
-}
-
-.main-nav li a:hover,
-.main-nav li a:active {
-	border-bottom: 2px solid #e67e22;
-}
-#nav-bg {
-	opacity: 0.9 !important;
-}
 /*-------- LINKS ---------*/
 a:link,
 a:visited {
@@ -396,17 +365,18 @@ input[type="submit"]:active {
 /*---------------------------------------------------*/
 
 .reviews {
-	background-image: -webkit-gradient(
+	/* background-image: -webkit-gradient(
 			linear,
 			left top,
 			left bottom,
 			from(rgba(0, 0, 0, 0.8)),
 			to(rgba(0, 0, 0, 0.8))
 		),
-		url(../img/meat4.jpg);
+		url("../img/meat4.jpg");
 	background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-		url(../img/meat4.jpg);
+		url("../img/meat4.jpg"); */
 	/* linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(meat1.jpg);*/
+	background-image: url("../img/meat4_dark.jpg");
 	background-size: cover;
 	color: #fff;
 	background-attachment: fixed; /* images stays in the same place */
